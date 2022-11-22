@@ -6,7 +6,7 @@ import styles from "./styles";
 export const BoardList = ({boards = data.boards, lists=data.lists, tasks=data.tasks}) => {
     console.log(boards)
     return (
-        <View>
+        <View style={styles.list}>
             <FlatList 
                 data={boards}
                 renderItem={({item}) => <Board board={item} lists={lists} tasks={tasks} />}
