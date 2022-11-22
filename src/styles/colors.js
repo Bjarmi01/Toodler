@@ -1,2 +1,2 @@
-export const greenBlueDark = "#156663" 
-export const greenBlueLight = "#23A6A1"
+export const greenBlueDark = "#5DA5A6" 
+export const greenBlueLight = "#DCF1F2"

@@ -15,6 +15,25 @@ export default StyleSheet.create({
         margin: 10,
         
     },
+    isSelectedBoard: {
+        width: "auto",
+        height: 200,
+        alignContent: 'center',
+        backgroundColor: "white",
+        opacity: .9,
+        borderTopLeftRadius: 6,
+        borderBottomRightRadius: 6,
+        borderTopRightRadius: 6,
+        borderBottomLeftRadius: 6,
+        margin: 10,
+        
+    },
+    checkmark: {
+        position: 'absolute',
+        top: 15,
+        right: 15,
+        fontSize: 16
+    },
     boardImage: {
         width: 40,
         height: 40,
