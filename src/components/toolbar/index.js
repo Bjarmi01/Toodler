@@ -1,11 +1,14 @@
+import { NavigationHelpersContext } from "@react-navigation/native";
 import React from "react";
 import { View, Text, TouchableHighlight } from "react-native";
 import styles from "./styles";
 
-export const Toolbar = ({hasBoardSelected, deleteBoard}) => {
+export const Toolbar = ( navigate, {hasBoardSelected, deleteBoard}) => {
     return (
         <View style={styles.toolbar}>
-            <TouchableHighlight style={styles.toolbarAction} >
+            <TouchableHighlight 
+                                style={styles.toolbarAction}
+                                onPress={() => navigate('createBoard')} >
                 <Text style={styles.toolbarActionText} >Create Board</Text>
             </TouchableHighlight>
             <TouchableHighlight 

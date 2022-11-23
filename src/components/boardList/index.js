@@ -6,8 +6,7 @@ import List from "../list";
 import listByBoardId from '../list'
 
 export const BoardList = ({boards, lists, tasks, onLongPress, selectedBoards}) => {
-    console.log(boards)
-    console.log(lists)
+    
     return (
         <View style={styles.list}>
             <FlatList  
@@ -19,7 +18,7 @@ export const BoardList = ({boards, lists, tasks, onLongPress, selectedBoards}) =
                                 board={item} 
                                 lists={lists} 
                                 tasks={tasks} />)}
-                keyExtractor={item => item.id}
+                keyExtractor={(item) => item.id}
             />
         </View>
     );

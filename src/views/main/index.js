@@ -6,7 +6,7 @@ import BoardList from "../../components/boardList";
 import * as data from "../../../data.json";
 
 
-export const Main = () => {
+export const Main = ({navigation: {navigate} }) => {
     const [boards, setBoards] = useState(data.boards);
     const [lists, setLists] = useState(data.lists);
     const [tasks, setTasks] = useState(data.tasks);
@@ -32,7 +32,7 @@ export const Main = () => {
 
     return (
         <View >
-            <Toolbar deleteBoard={() => deleteBoard()} hasBoardSelected={selectedBoards.length > 0}/>
+            <Toolbar navigate deleteBoard={() => deleteBoard()} hasBoardSelected={selectedBoards.length > 0}/>
             <BoardList 
                 onLongPress={id => onBoardLongPress(id)}
                 selectedBoards={selectedBoards}
