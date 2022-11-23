@@ -24,10 +24,22 @@ export const Main = ({navigation}) => {
     const deleteBoard = () => {
         setBoards(boards.filter((board) => !selectedBoards.includes(board.id)));
         /*Hér vantar að eyða lists og tasks*/
+        // for list in lists if list.boardId in selectedBoards then call deleteList(list.id)
+        lists.filter((list) => selectedBoards.includes(list.boardId)).forEach((list) => deleteList(list.id));
         setSelectedBoards([]);
     
     }
 
+    const deleteList = (id) => {
+        setLists(lists.filter((list) => list.id !== id));
+        console.log("deleteList", id);
+        tasks.filter((list) => list.listId === id).forEach((task) => deleteTask(task.id));
+    }
+
+    const deleteTask = (id) => {
+        setTasks(tasks.filter((task) => task.id !== id));
+        console.log("deleteTask", id);
+    }
     
 
     return (

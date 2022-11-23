@@ -6,7 +6,6 @@ import List from "../list";
 
 export const Board = ({ board, lists, tasks, onLongPress, isSelected }) => {
     const listByBoardId = lists.filter(list => list.boardId === board.id);
-    console.log(listByBoardId);
 
     return (
         <TouchableOpacity onLongPress={() => onLongPress(board.id)} >
