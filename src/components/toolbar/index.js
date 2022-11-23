@@ -3,12 +3,12 @@ import React from "react";
 import { View, Text, TouchableHighlight } from "react-native";
 import styles from "./styles";
 
-export const Toolbar = ( navigate, {hasBoardSelected, deleteBoard}) => {
+export const Toolbar = ({navigation, hasBoardSelected, deleteBoard}) => {
     return (
         <View style={styles.toolbar}>
             <TouchableHighlight 
                                 style={styles.toolbarAction}
-                                onPress={() => navigate('createBoard')} >
+                                onPress={() => navigation.navigate('CreateBoard')} >
                 <Text style={styles.toolbarActionText} >Create Board</Text>
             </TouchableHighlight>
             <TouchableHighlight 
