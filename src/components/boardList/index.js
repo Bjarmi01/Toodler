@@ -4,7 +4,6 @@ import { Board } from "../board";
 import styles from "./styles";
 
 export const BoardList = ({boards, lists, tasks, onLongPress, selectedBoards}) => {
-    console.log(boards)
     return (
         <View style={styles.list}>
             <FlatList  
