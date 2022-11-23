@@ -2,6 +2,7 @@ import React from "react";
 import { View, Text, Image, TouchableOpacity } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
 import styles from "./styles";
+import List from "../list";
 
 export const Board = ({ board, lists, tasks, onLongPress, isSelected }) => {
     return (
