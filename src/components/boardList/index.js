@@ -3,8 +3,8 @@ import { View, Text, FlatList } from "react-native";
 import { Board } from "../board";
 import styles from "./styles";
 
-export const BoardList = ({boards = data.boards, lists=data.lists, tasks=data.tasks, onLongPress, selectedBoards}) => {
-    console.log(selectedBoards)
+export const BoardList = ({boards, lists, tasks, onLongPress, selectedBoards}) => {
+    console.log(boards)
     return (
         <View style={styles.list}>
             <FlatList  
