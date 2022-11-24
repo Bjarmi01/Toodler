@@ -4,7 +4,7 @@ import { greenBlueLight } from '../../styles/colors';
 export default StyleSheet.create({
     board: {
         width: "auto",
-        height: 200,
+        height: 'auto',
         alignContent: 'center',
         backgroundColor: "white",
         
@@ -39,6 +39,6 @@ export default StyleSheet.create({
         height: 40,
         borderRadius: 20
 
-    }
+    },
 
 });
