@@ -26,7 +26,7 @@ export const Board = ({ board, lists, tasks, onLongPress, isSelected }) => {
                     style={styles.boardImage}
                     resizeMode="cover"
                     source={{ uri: board.thumbnailPhoto }} />
-                <Text>{board.name}</Text>
+                <Text style={styles.boardName}>{board.name}</Text>
                 <FlatList 
                         data={listByBoardId}
                         renderItem={({item}) => (<List board={board} list={item} tasks={tasks} />)}
