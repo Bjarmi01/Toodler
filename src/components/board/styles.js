@@ -49,6 +49,42 @@ export default StyleSheet.create({
         textAlign: 'center',
         color: greenBlueDark,
         marginBottom: 10,
-    }
+        marginLeft: 20,
+        width: "auto",
+    },
+    boardInfo: {
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center',
+        alignContent: 'center',
+        textAlign: 'center',
+
+    },
+    editIcon: {
+        fontSize: 20,
+        justifyContent: 'center',
+        paddingBottom: 10,
+        
+    
+    },
+    actionIcon: {
+        fontSize: 25,
+        justifyContent: 'center',
+        paddingBottom: 10,
+        marginLeft: 15,
+    
+    },
+
+    boardNameInput: {
+        fontSize: 18,
+        fontWeight: 'bold',
+        color: greenBlueDark,
+        marginBottom: 10,
+        width: "60%",
+
+    },
+
+
+    
 
 });
