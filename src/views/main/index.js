@@ -3,7 +3,10 @@ import { View, Text, StyleSheet } from "react-native";
 import styles from "./styles";
 import Toolbar from "../../components/toolbar";
 import BoardList from "../../components/boardList";
+import Board from "../../components/board";
 import * as data from "../../../data.json";
+import ListToolbar from "../../components/listToolbar";
+import List from "../../components/list";
 
 
 export const Main = ({navigation}) => {
@@ -12,6 +15,8 @@ export const Main = ({navigation}) => {
     const [tasks, setTasks] = useState(data.tasks);
     const [selectedBoards , setSelectedBoards] = useState([]); 
     const [isCreatingBoard, setIsCreatingBoard] = useState(false);
+    const [isCreatingList, setIsCreatingList] = useState(false);
+    const [selectedLists , setSelectedLists] = useState([]); 
 
     const onBoardLongPress = (id) => {
         if(selectedBoards.includes(id)) {
@@ -49,10 +54,38 @@ export const Main = ({navigation}) => {
     
     }
 
+    const onListLongPress = (id) => {
+        if(selectedLists.includes(id)) {
+            setSelectedLists(selectedLists.filter((list) => list !== id));
+        } else {
+            
+            setSelectedLists([...selectedLists, id]);
+        }
+    };
+
+    const onCreateList = () => {
+        if (!isCreatingList) {
+            setIsCreatingList(true);
+        }
+        
+    };
+
+    const onCreateListCancel = (newList) => {
+        setIsCreatingList(false);
+        
+    };
+
+    const onListSubmit = (newList) => {
+        setLists([...lists, newList]);
+        setIsCreatingList(false);
+        console.log("New list created");
+    };
+
     const deleteList = (id) => {
-        setLists(lists.filter((list) => list.id !== id));
+        setLists(lists.filter((list) => !selectedLists.includes(list.id)));
         console.log("deleteList", id);
-        tasks.filter((list) => list.listId === id).forEach((task) => deleteTask(task.id));
+        tasks.filter((task) => selectedLists.includes(task.listId)).forEach((task) => deleteList(task.id));
+        setSelectedLists([]);
     }
 
     const deleteTask = (id) => {
@@ -71,6 +104,11 @@ export const Main = ({navigation}) => {
                 onBoardSubmit={(newBoard) => onBoardSubmit(newBoard)}
                 isCreatingBoard={isCreatingBoard}
                 selectedBoards={selectedBoards}
+                onListLongPress={id => onListLongPress(id)}
+                onCreateListCancel={() => onCreateListCancel()}
+                onListSubmit={(newList) => onListSubmit(newList)}
+                isCreatingList={isCreatingList}
+                selectedLists= {selectedLists}
                 boards={boards}
                 lists={lists}
                 tasks={tasks}

@@ -20,6 +20,7 @@ export default StyleSheet.create({
         alignItems: 'flex-start',
         flexWrap: 'wrap',
         flexDirection: 'row',
+        marginBottom: 7
     }
 
 });
