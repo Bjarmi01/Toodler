@@ -11,6 +11,7 @@ export const Main = ({navigation}) => {
     const [lists, setLists] = useState(data.lists);
     const [tasks, setTasks] = useState(data.tasks);
     const [selectedBoards , setSelectedBoards] = useState([]); 
+    const [isCreatingBoard, setIsCreatingBoard] = useState(false);
 
     const onBoardLongPress = (id) => {
         if(selectedBoards.includes(id)) {
@@ -19,6 +20,24 @@ export const Main = ({navigation}) => {
             
             setSelectedBoards([...selectedBoards, id]);
         }
+    };
+
+    const onCreateBoard = () => {
+        if (!isCreatingBoard) {
+            setIsCreatingBoard(true);
+        }
+        
+    };
+
+    const onCreateBoardCancel = (newBoard) => {
+        setIsCreatingBoard(false);
+        
+    };
+
+    const onBoardSubmit = (newBoard) => {
+        setBoards([...boards, newBoard]);
+        setIsCreatingBoard(false);
+        console.log("New board created");
     };
 
     const deleteBoard = () => {
@@ -40,13 +59,17 @@ export const Main = ({navigation}) => {
         setTasks(tasks.filter((task) => task.id !== id));
         console.log("deleteTask", id);
     }
+
     
 
     return (
         <View >
-            <Toolbar navigation={navigation} deleteBoard={() => deleteBoard()} hasBoardSelected={selectedBoards.length > 0}/>
+            <Toolbar onCreateBoard={()=> onCreateBoard()} navigation={navigation} deleteBoard={() => deleteBoard()} hasBoardSelected={selectedBoards.length > 0}/>
             <BoardList 
                 onLongPress={id => onBoardLongPress(id)}
+                onCreateBoardCancel={() => onCreateBoardCancel()}
+                onBoardSubmit={(newBoard) => onBoardSubmit(newBoard)}
+                isCreatingBoard={isCreatingBoard}
                 selectedBoards={selectedBoards}
                 boards={boards}
                 lists={lists}

@@ -6,14 +6,14 @@ export default StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'center',
-        height: 85,
+        height: 50,
         backgroundColor: greenBlueDark
     },
     toolbarAction: {
         flex: 1,
         alignItems: 'center',
-        marginTop: 30,
     },
+
     toolbarActionText: {
         fontWeight: 'bold',
         color: 'white',
