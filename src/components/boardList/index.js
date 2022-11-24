@@ -2,9 +2,11 @@ import React from "react";
 import { View, Text, FlatList } from "react-native";
 import { Board } from "../board";
 import styles from "./styles";
+import List from "../list";
+import listByBoardId from '../list'
 
-export const BoardList = ({boards = data.boards, lists=data.lists, tasks=data.tasks, onLongPress, selectedBoards}) => {
-    console.log(selectedBoards)
+export const BoardList = ({boards, lists, tasks, onLongPress, selectedBoards}) => {
+    
     return (
         <View style={styles.list}>
             <FlatList  
@@ -16,10 +18,8 @@ export const BoardList = ({boards = data.boards, lists=data.lists, tasks=data.ta
                                 board={item} 
                                 lists={lists} 
                                 tasks={tasks} />)}
-                keyExtractor={item => item.id}
-
+                keyExtractor={(item) => item.id}
             />
-             
         </View>
     );
 }
