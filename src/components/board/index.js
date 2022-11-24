@@ -29,7 +29,6 @@ export const Board = ({ board, lists, tasks, onLongPress, isSelected }) => {
                 <Text style={styles.boardName}>{board.name}</Text>               
                 
                 <FlatList
-                        style={styles.lists}
                         numColumns={3}
                         data={listByBoardId}
                         renderItem={({item}) => (<List board={board} list={item} tasks={tasks} />)}
