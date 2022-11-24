@@ -2,7 +2,7 @@ import { StyleSheet } from 'react-native';
 import { greenBlueLight } from '../../styles/colors';
 
 export default StyleSheet.create({
-    list: {
+    /*list: {
         padding: 8,
         width: '90%',
         height: 50,
@@ -14,7 +14,7 @@ export default StyleSheet.create({
         borderTopRightRadius: 6,
         borderBottomLeftRadius: 6,
         margin: 5,
-    },
+    },*/
     listContainer:{
         flex: 1,
         alignItems: 'flex-start',
