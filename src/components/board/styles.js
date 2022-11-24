@@ -17,7 +17,7 @@ export default StyleSheet.create({
     },
     isSelectedBoard: {
         width: "auto",
-        height: 200,
+        height: 'auto',
         alignContent: 'center',
         backgroundColor: "white",
         opacity: .9,
