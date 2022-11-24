@@ -30,10 +30,6 @@ export const BoardList = ({boards, lists, tasks, onLongPress, selectedBoards, is
     
     return (
         <View style={styles.list}>
-            
-                
-                
-
             {
                 isCreatingBoard && !isBoardNamed 
                 ?
@@ -71,7 +67,6 @@ export const BoardList = ({boards, lists, tasks, onLongPress, selectedBoards, is
                 <></>
             }
             {
-
                 isBoardNamed
                 ?    
                 <Banner
@@ -102,7 +97,6 @@ export const BoardList = ({boards, lists, tasks, onLongPress, selectedBoards, is
                         />
                 </HStack>
                 }
-                
                 />
                 :
                 <></>

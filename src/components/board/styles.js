@@ -1,18 +1,19 @@
 import { StyleSheet } from 'react-native';
-import { greenBlueLight } from '../../styles/colors';
+import { greenBlueLight, greenBlueDark } from '../../styles/colors';
 
 export default StyleSheet.create({
     board: {
+        flex: 1,
         width: "auto",
-        height: 'auto',
-        alignContent: 'center',
+        height: "auto",
+        textAlign: 'center',
         backgroundColor: "white",
-        
         borderTopLeftRadius: 6,
         borderBottomRightRadius: 6,
         borderTopRightRadius: 6,
         borderBottomLeftRadius: 6,
         margin: 10,
+       
         
     },
     isSelectedBoard: {
@@ -35,10 +36,19 @@ export default StyleSheet.create({
         fontSize: 16
     },
     boardImage: {
-        width: 40,
-        height: 40,
-        borderRadius: 20
+        width: 50,
+        height: 50,
+        alignSelf: 'center',
+        borderRadius: 20,
+        margin: 10,
 
     },
+    boardName: {
+        fontSize: 18,
+        fontWeight: 'bold',
+        textAlign: 'center',
+        color: greenBlueDark,
+        marginBottom: 10,
+    }
 
 });
