@@ -27,12 +27,12 @@ export const Board = ({ board, lists, tasks, onLongPress, isSelected }) => {
                     resizeMode="cover"
                     source={{ uri: board.thumbnailPhoto }} />
                 <Text>{board.name}</Text>
-                <FlatList 
+                <FlatList
+                        style={styles.lists}
+                        numColumns={3}
                         data={listByBoardId}
                         renderItem={({item}) => (<List board={board} list={item} tasks={tasks} />)}
                         keyExtractor={(item) => item.id}/>
-                    
-                
             </View> 
             
         </TouchableOpacity>
