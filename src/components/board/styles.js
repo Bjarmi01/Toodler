@@ -61,7 +61,7 @@ export default StyleSheet.create({
 
     },
     editIcon: {
-        fontSize: 20,
+        fontSize: 18,
         justifyContent: 'center',
         paddingBottom: 10,
         

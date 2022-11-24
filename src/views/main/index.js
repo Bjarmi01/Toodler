@@ -33,6 +33,19 @@ export const Main = ({navigation}) => {
         setBoards(newBoards);
     };
 
+    const updateTaskStatus = (updatedTask) => {
+        const newTasks = tasks.map((task) => {
+            if(task.id === updatedTask.id) {
+                return updatedTask;
+            } else {
+                return task;
+            }
+        })
+        setTasks(newTasks);
+
+    };
+
+    
 
     const onCreateBoard = () => {
         if (!isCreatingBoard) {
@@ -69,10 +82,8 @@ export const Main = ({navigation}) => {
 
     const deleteTask = (id) => {
         setTasks(tasks.filter((task) => task.id !== id));
-        console.log("deleteTask", id);
+        
     }
-
-    
 
     return (
         <View >
@@ -87,6 +98,8 @@ export const Main = ({navigation}) => {
                 boards={boards}
                 lists={lists}
                 tasks={tasks}
+                updateTaskStatus={(updatedTask) => updateTaskStatus(updatedTask)}
+                deleteTask={(id) => deleteTask(id)}
             />
         </View>
     );

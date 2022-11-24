@@ -5,7 +5,7 @@ import styles from "./styles";
 import List from "../list";
 import { TextInput } from "@react-native-material/core";
 
-export const Board = ({ board, lists, tasks, onLongPress, isSelected, updateBoard }) => {
+export const Board = ({deleteTask, updateTaskStatus, board, lists, tasks, onLongPress, isSelected, updateBoard }) => {
     const listByBoardId = lists.filter(list => list.boardId === board.id);
     const [boardName, setBoardName] = useState(board.name);
     const [isEditingBoard, setIsEditingBoard] = useState(false);
@@ -77,9 +77,9 @@ export const Board = ({ board, lists, tasks, onLongPress, isSelected, updateBoar
                     
                 
                 <FlatList
-                        numColumns={3}
+                        
                         data={listByBoardId}
-                        renderItem={({item}) => (<List board={board} list={item} tasks={tasks} />)}
+                        renderItem={({item}) => (<List board={board} list={item} tasks={tasks} updateTaskStatus={updateTaskStatus} deleteTask={deleteTask} />)}
                         keyExtractor={(item) => item?.id}/>
             </View> 
             

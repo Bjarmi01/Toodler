@@ -20,6 +20,16 @@ export default StyleSheet.create({
         alignItems: 'flex-start',
         flexWrap: 'wrap',
         flexDirection: 'row',
-    }
+        justifyContent: 'center',
+        textAlign: 'center',
+    },
+    listName: {
+        fontSize: 15,
+        fontWeight: 'bold',
+        textAlign: 'center',
+        
+
+        
+    },
 
 });
