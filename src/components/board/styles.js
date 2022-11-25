@@ -12,9 +12,8 @@ export default StyleSheet.create({
         borderBottomRightRadius: 6,
         borderTopRightRadius: 6,
         borderBottomLeftRadius: 6,
-        margin: 10,
-       
-        
+        marginBottom: 10,
+        marginHorizontal:10
     },
     isSelectedBoard: {
         width: "auto",
@@ -26,7 +25,8 @@ export default StyleSheet.create({
         borderBottomRightRadius: 6,
         borderTopRightRadius: 6,
         borderBottomLeftRadius: 6,
-        margin: 10,
+        marginBottom:10,
+        marginHorizontal:10
         
     },
     checkmark: {
@@ -41,7 +41,6 @@ export default StyleSheet.create({
         alignSelf: 'center',
         borderRadius: 20,
         margin: 10,
-
     },
     boardName: {
         fontSize: 18,
@@ -83,8 +82,5 @@ export default StyleSheet.create({
         width: "60%",
 
     },
-
-
-    
 
 });

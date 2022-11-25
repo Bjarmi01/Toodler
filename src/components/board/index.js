@@ -1,8 +1,10 @@
 import React, { useState }from "react";
-import { View, Text, Image, TouchableOpacity, FlatList } from "react-native";
+import { View, Text, Image, TouchableOpacity, FlatList, TouchableHighlight } from "react-native";
 import { AntDesign, Octicons } from "@expo/vector-icons";
 import styles from "./styles";
 import List from "../list";
+import ListToolbar from "../listToolbar";
+import Main from "../../views/main";
 import { TextInput } from "@react-native-material/core";
 
 export const Board = ({updateTask, deleteTask, updateTaskStatus, board, lists, tasks, onLongPress, isSelected, updateBoard }) => {
@@ -22,6 +24,7 @@ export const Board = ({updateTask, deleteTask, updateTaskStatus, board, lists, t
     }
 
     return (
+
         <TouchableOpacity onLongPress={() => onLongPress(board.id)} >
             
             <View style={
@@ -85,6 +88,7 @@ export const Board = ({updateTask, deleteTask, updateTaskStatus, board, lists, t
             </View> 
             
         </TouchableOpacity>
+
     )}; 
 
 export default Board;
