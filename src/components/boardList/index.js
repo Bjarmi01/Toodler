@@ -4,6 +4,7 @@ import { Board } from "../board";
 import styles from "./styles";
 import { greenBlueDark } from "../../styles/colors";
 import { Banner, Button, HStack, TextInput } from "@react-native-material/core";
+import { SelectList } from 'react-native-dropdown-select-list'
 
 
 
@@ -17,6 +18,12 @@ export const BoardList = ({boards, lists, tasks, onLongPress, selectedBoards, is
     const [listName , setListName] = useState("");
     const [isListNamed, setIsListNamed] = useState(false);
     const [listColor, setListColor] = useState("");
+    const [boardId, setBoardId] = useState("");
+
+    const [selected, setSelected] = React.useState("");
+    const data = [
+        {key:lists.id, value:lists.name},
+    ]
     
     const createBoard = () => {
         const newBoard = {
@@ -33,10 +40,12 @@ export const BoardList = ({boards, lists, tasks, onLongPress, selectedBoards, is
 
     const createList = () => {
         const newList = {
+            boardId: parseInt(boardId),
             id: lists.length + 1,
             name: listName,
             color: listColor,
         }
+        setBoardId("");
         setIsListNamed(false);
         setListName("");
         setListColor("");
@@ -163,10 +172,44 @@ export const BoardList = ({boards, lists, tasks, onLongPress, selectedBoards, is
                 <HStack spacing={2}>
                     <TextInput 
                             color={greenBlueDark} 
-                            style={styles.ListNameInput} 
+                            style={styles.BoardNameInput} 
                             variant="standard" 
                             onChangeText={(newListColor) => setListColor(newListColor)}
                             />
+                    <Button 
+                            color="red" 
+                            key="Back" 
+                            variant="text" 
+                            title="Back" 
+                            compact 
+                            onPress={() => setIsListNamed(false)}
+                            />
+                    <Button 
+                        color={greenBlueDark} 
+                        key="Next" 
+                        variant="text" 
+                        title="Next" 
+                        compact 
+                        onPress={() => setIsListNamed(true)}
+                        />
+                </HStack>
+                }
+                />
+                :
+                <></>
+            }
+            {
+                isListNamed
+                ?    
+                <Banner
+                text="Select the board you want this list to be associated with."
+                buttons={
+                <HStack spacing={2}>
+                    <SelectList
+                        setSelected={(val) => setSelected(val)} 
+                        data={data} 
+                        save="value"
+                    />
                     <Button 
                             color="red" 
                             key="Back" 
@@ -189,7 +232,6 @@ export const BoardList = ({boards, lists, tasks, onLongPress, selectedBoards, is
                 :
                 <></>
             }
-
             <FlatList  
                 data={boards}
                 renderItem={({item}) => (

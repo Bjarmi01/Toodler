@@ -18,6 +18,9 @@ export const Main = ({navigation}) => {
     const [isCreatingList, setIsCreatingList] = useState(false);
     const [selectedLists , setSelectedLists] = useState([]); 
 
+
+    
+
     const onBoardLongPress = (id) => {
         if(selectedBoards.includes(id)) {
             setSelectedBoards(selectedBoards.filter((board) => board !== id));
@@ -54,6 +57,13 @@ export const Main = ({navigation}) => {
     
     }
 
+    const onCreateList = () => {
+        if (!isCreatingList) {
+            setIsCreatingList(true);
+        }
+        
+    };
+
     const onListLongPress = (id) => {
         if(selectedLists.includes(id)) {
             setSelectedLists(selectedLists.filter((list) => list !== id));
@@ -61,13 +71,6 @@ export const Main = ({navigation}) => {
             
             setSelectedLists([...selectedLists, id]);
         }
-    };
-
-    const onCreateList = () => {
-        if (!isCreatingList) {
-            setIsCreatingList(true);
-        }
-        
     };
 
     const onCreateListCancel = (newList) => {
@@ -78,6 +81,7 @@ export const Main = ({navigation}) => {
     const onListSubmit = (newList) => {
         setLists([...lists, newList]);
         setIsCreatingList(false);
+        console.log(newList);
         console.log("New list created");
     };
 
@@ -98,6 +102,7 @@ export const Main = ({navigation}) => {
     return (
         <View >
             <Toolbar onCreateBoard={()=> onCreateBoard()} navigation={navigation} deleteBoard={() => deleteBoard()} hasBoardSelected={selectedBoards.length > 0}/>
+            <ListToolbar onCreateList={()=> onCreateList()} navigation={navigation} deleteList={() => deleteList()} hasListSelected={selectedLists.length > 0}/>
             <BoardList 
                 onLongPress={id => onBoardLongPress(id)}
                 onCreateBoardCancel={() => onCreateBoardCancel()}

@@ -2,6 +2,7 @@ import { NavigationHelpersContext } from "@react-navigation/native";
 import React from "react";
 import { View, Text, TouchableHighlight } from "react-native";
 import styles from "./styles";
+import Main from "../../views/main";
 
 export const ListToolbar = ({onCreateList , navigation, hasBoardSelected, deleteList}) => {
     return (

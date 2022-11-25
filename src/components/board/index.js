@@ -6,12 +6,11 @@ import List from "../list";
 import ListToolbar from "../listToolbar";
 import Main from "../../views/main";
 
-export const Board = ({ board, lists, tasks, onLongPress, isSelected, onCreateList, hasBoardSelected, deleteList, navigation}) => {
+export const Board = ({ board, lists, tasks, onLongPress, isSelected}) => {
     const listByBoardId = lists.filter(list => list.boardId === board.id);
-    
+
     return (
         <View>
-            <ListToolbar onCreateList={()=> onCreateList()} navigation={navigation} deleteList={() => deleteList()}/>
             <TouchableOpacity onLongPress={() => onLongPress(board.id)} >
                 <View style={
                             isSelected
