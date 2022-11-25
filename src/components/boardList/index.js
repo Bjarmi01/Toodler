@@ -21,9 +21,12 @@ export const BoardList = ({boards, lists, tasks, onLongPress, selectedBoards, is
     const [boardId, setBoardId] = useState("");
 
     const [selected, setSelected] = React.useState("");
-    const data = [
-        {key:lists.id, value:lists.name},
-    ]
+    const data = boards.map((board)=>{
+        return{
+            key: board.id,
+            value: board.name
+        };
+    });
     
     const createBoard = () => {
         const newBoard = {
@@ -206,9 +209,9 @@ export const BoardList = ({boards, lists, tasks, onLongPress, selectedBoards, is
                 buttons={
                 <HStack spacing={2}>
                     <SelectList
-                        setSelected={(val) => setSelected(val)} 
+                        setSelected={(val) => setBoardId(val)} 
                         data={data} 
-                        save="value"
+                        save="key"
                     />
                     <Button 
                             color="red" 
