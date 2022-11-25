@@ -18,9 +18,6 @@ export const Main = ({navigation}) => {
     const [isCreatingList, setIsCreatingList] = useState(false);
     const [selectedLists , setSelectedLists] = useState([]); 
 
-
-    
-
     const onBoardLongPress = (id) => {
         if(selectedBoards.includes(id)) {
             setSelectedBoards(selectedBoards.filter((board) => board !== id));
@@ -52,8 +49,6 @@ export const Main = ({navigation}) => {
         setTasks(newTasks);
 
     };
-
-    
 
     const onCreateBoard = () => {
         if (!isCreatingBoard) {
@@ -113,7 +108,7 @@ export const Main = ({navigation}) => {
     const deleteList = (id) => {
         setLists(lists.filter((list) => !selectedLists.includes(list.id)));
         console.log("deleteList", id);
-        tasks.filter((task) => selectedLists.includes(task.listId)).forEach((task) => deleteList(task.id));
+        tasks.filter((task) => selectedLists.includes(task.listId)).forEach((task) => deleteTask(task.id));
         setSelectedLists([]);
     }
 
