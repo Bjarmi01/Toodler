@@ -11,12 +11,16 @@ export default StyleSheet.create({
     },
     toolbarAction: {
         flex: 1,
+        justifyContent: 'center',
         alignItems: 'center',
+        
     },
-
-    toolbarActionText: {
+    toolbarIcons: {
         fontWeight: 'bold',
         color: 'white',
-        fontSize: 14
+        fontSize: 25,
+        width: "auto",
+        marginLeft: "auto",
+        marginRight: "auto",
     }
 });

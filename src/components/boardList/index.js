@@ -10,7 +10,8 @@ import { SelectList } from 'react-native-dropdown-select-list'
 
 
 
-export const BoardList = ({boards, lists, tasks, onLongPress, selectedBoards, isCreatingBoard, onCreateBoardCancel, onBoardSubmit, onCreateListCancel, selectedLists, isCreatingList, onListSubmit}) => {
+
+export const BoardList = ({updateTask, deleteTask, updateTaskStatus, boards, lists, tasks, onLongPress, selectedBoards, isCreatingBoard, onCreateBoardCancel, onBoardSubmit, updateBoard, onCreateListCancel, selectedLists, isCreatingList, onListSubmit}) => {
     const [boardName , setBoardName] = useState("");
     const [isBoardNamed, setIsBoardNamed] = useState(false);
     const [imgURL, setImgURL] = useState("");
@@ -243,8 +244,14 @@ export const BoardList = ({boards, lists, tasks, onLongPress, selectedBoards, is
                                 isSelected={selectedBoards.includes(item.id)}
                                 board={item} 
                                 lists={lists} 
-                                tasks={tasks} />)}
-                keyExtractor={(item) => item.id}
+                                updateBoard={updateBoard}
+                                tasks={tasks} 
+                                updateTaskStatus={updateTaskStatus}
+                                deleteTask={deleteTask}
+                                updateTask={updateTask}
+                                />)}
+                                
+                keyExtractor={(item) => item?.id}
             />
         </View>
     );

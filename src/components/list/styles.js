@@ -21,6 +21,16 @@ export default StyleSheet.create({
         flexWrap: 'wrap',
         flexDirection: 'row',
         marginBottom: 7
-    }
+        justifyContent: 'center',
+        textAlign: 'center',
+    },
+    listName: {
+        fontSize: 15,
+        fontWeight: 'bold',
+        textAlign: 'center',
+        
+
+        
+    },
 
 });

@@ -30,6 +30,31 @@ export const Main = ({navigation}) => {
         }
     };
 
+    const updateBoard = (updatedBoard) => {
+        const newBoards = boards.map((board) => {
+            if(board.id === updatedBoard.id) {
+                return updatedBoard;
+            } else {
+                return board;
+            }
+        })
+        setBoards(newBoards);
+    };
+
+    const updateTaskStatus = (updatedTask) => {
+        const newTasks = tasks.map((task) => {
+            if(task.id === updatedTask.id) {
+                return updatedTask;
+            } else {
+                return task;
+            }
+        })
+        setTasks(newTasks);
+
+    };
+
+    
+
     const onCreateBoard = () => {
         if (!isCreatingBoard) {
             setIsCreatingBoard(true);
@@ -94,10 +119,20 @@ export const Main = ({navigation}) => {
 
     const deleteTask = (id) => {
         setTasks(tasks.filter((task) => task.id !== id));
-        console.log("deleteTask", id);
+        
     }
 
-    
+    const updateTask = (updatedTask) => {
+        const newTasks = tasks.map((task) => {
+            if(task.id === updatedTask.id) {
+                return updatedTask;
+            } else {
+                return task;
+            }
+        })
+        setTasks(newTasks);
+
+    };
 
     return (
         <View >
@@ -107,6 +142,7 @@ export const Main = ({navigation}) => {
                 onLongPress={id => onBoardLongPress(id)}
                 onCreateBoardCancel={() => onCreateBoardCancel()}
                 onBoardSubmit={(newBoard) => onBoardSubmit(newBoard)}
+                updateBoard={(updatedboard) => updateBoard(updatedboard)}
                 isCreatingBoard={isCreatingBoard}
                 selectedBoards={selectedBoards}
                 onListLongPress={id => onListLongPress(id)}
@@ -117,6 +153,9 @@ export const Main = ({navigation}) => {
                 boards={boards}
                 lists={lists}
                 tasks={tasks}
+                updateTaskStatus={(updatedTask) => updateTaskStatus(updatedTask)}
+                deleteTask={(id) => deleteTask(id)}
+                updateTask={(updatedTask) => updateTask(updatedTask)}
             />
         </View>
     );
