@@ -34,19 +34,29 @@ export default StyleSheet.create({
     },
 
     editActionBtns: {
-        flexDirection: "column",
-        justifyContent: "center",
-        alignItems: "center",
+        flexDirection: "row",
+        justifyContent: "right",
+        alignItems: "right",
         marginLeft: 25,
     },
 
     actionBtns: {
         padding: 2,
         marginTop: 15,
-    
+        
+       
+},
+
+    trash: {
+        width: "50%",
     },
 
-    
+    confirmCancelBtns: {
+        width: "50%",
+        flexDirection: "row",
+        alignItems: "right",
+        
+    },
 
 
 });

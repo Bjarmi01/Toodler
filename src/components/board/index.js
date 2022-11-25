@@ -80,7 +80,7 @@ export const Board = ({updateTask, deleteTask, updateTaskStatus, board, lists, t
                         
                         data={listByBoardId}
                         numColumns={1}
-                        renderItem={({item}) => (<List board={board} list={item} tasks={tasks} updateTaskStatus={updateTaskStatus} deleteTask={deleteTask} updateTask={updateTask}/>)}
+                        renderItem={({item}) => (<List board={board} list={item} tasks={tasks} updateTaskStatus={updateTaskStatus} deleteTask={deleteTask} updateTask={updateTask} lists={lists}/>)}
                         keyExtractor={(item) => item?.id}/>
             </View> 
             

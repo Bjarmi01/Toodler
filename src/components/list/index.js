@@ -3,7 +3,7 @@ import { View, Text, Image, FlatList} from "react-native";
 import styles from "./styles";
 import Task from "../task";
 
-export const List = ({ updateTask, deleteTask, updateTaskStatus ,board, list, tasks }) => {
+export const List = ({ updateTask, deleteTask, updateTaskStatus ,board, list, tasks, lists }) => {
     const taskByListId = tasks.filter(task => task.listId === list.id);
     return (
         <View style={styles.listContainer}>
@@ -17,7 +17,7 @@ export const List = ({ updateTask, deleteTask, updateTaskStatus ,board, list, ta
             </View>
             <FlatList
                 data={taskByListId}
-                renderItem={({ item }) => <Task task={item} updateTaskStatus={updateTaskStatus} deleteTask={deleteTask} updateTask={updateTask} />}
+                renderItem={({ item }) => <Task task={item} updateTaskStatus={updateTaskStatus} deleteTask={deleteTask} updateTask={updateTask} lists={lists} />}
                 keyExtractor={item => item?.id}
                  />
         </View>

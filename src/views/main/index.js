@@ -94,7 +94,6 @@ export const Main = ({navigation}) => {
             }
         })
         setTasks(newTasks);
-        console.log(tasks);
 
     };
 
