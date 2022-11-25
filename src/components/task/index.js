@@ -40,6 +40,7 @@ export const Task = ({ updateTask, deleteTask, updateTaskStatus, task} ) => {
 
 
     return (
+        
         <View>
         {
             isEditingTask
@@ -98,11 +99,10 @@ export const Task = ({ updateTask, deleteTask, updateTaskStatus, task} ) => {
                />
             </View>
             </View> 
-            
         }
         </View>
-        
     )
+    
 };
 
 export default Task;
