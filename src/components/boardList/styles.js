@@ -3,8 +3,8 @@ import { greenBlueLight } from "../../styles/colors";
 
 export default StyleSheet.create({
     list: {
-        
         backgroundColor: greenBlueLight,
+        marginBottom: '40%'
     },
     BoardNameInput: {
         flex: 1,

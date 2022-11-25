@@ -6,11 +6,6 @@ import { greenBlueDark } from "../../styles/colors";
 import { Banner, Button, HStack, TextInput } from "@react-native-material/core";
 import { SelectList } from 'react-native-dropdown-select-list'
 
-
-
-
-
-
 export const BoardList = ({updateTask, deleteTask, updateTaskStatus, boards, lists, tasks, onLongPress, selectedBoards, isCreatingBoard, onCreateBoardCancel, onBoardSubmit, updateBoard, onCreateListCancel, selectedLists, isCreatingList, onListSubmit}) => {
     const [boardName , setBoardName] = useState("");
     const [isBoardNamed, setIsBoardNamed] = useState(false);
