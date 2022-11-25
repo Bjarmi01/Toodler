@@ -33,6 +33,19 @@ export default StyleSheet.create({
         marginTop: 15,
     },
 
+    editActionBtns: {
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center",
+        marginLeft: 25,
+    },
+
+    actionBtns: {
+        padding: 2,
+        marginTop: 15,
+    
+    },
+
     
 
 

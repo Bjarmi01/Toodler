@@ -85,6 +85,19 @@ export const Main = ({navigation}) => {
         
     }
 
+    const updateTask = (updatedTask) => {
+        const newTasks = tasks.map((task) => {
+            if(task.id === updatedTask.id) {
+                return updatedTask;
+            } else {
+                return task;
+            }
+        })
+        setTasks(newTasks);
+        console.log(tasks);
+
+    };
+
     return (
         <View >
             <Toolbar onCreateBoard={()=> onCreateBoard()} navigation={navigation} deleteBoard={() => deleteBoard()} hasBoardSelected={selectedBoards.length > 0}/>
@@ -100,6 +113,7 @@ export const Main = ({navigation}) => {
                 tasks={tasks}
                 updateTaskStatus={(updatedTask) => updateTaskStatus(updatedTask)}
                 deleteTask={(id) => deleteTask(id)}
+                updateTask={(updatedTask) => updateTask(updatedTask)}
             />
         </View>
     );

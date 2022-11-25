@@ -9,7 +9,7 @@ import { Banner, Button, HStack, TextInput } from "@react-native-material/core";
 
 
 
-export const BoardList = ({deleteTask, updateTaskStatus, boards, lists, tasks, onLongPress, selectedBoards, isCreatingBoard, onCreateBoardCancel, onBoardSubmit, updateBoard}) => {
+export const BoardList = ({updateTask, deleteTask, updateTaskStatus, boards, lists, tasks, onLongPress, selectedBoards, isCreatingBoard, onCreateBoardCancel, onBoardSubmit, updateBoard}) => {
     const [boardName , setBoardName] = useState("");
     const [isBoardNamed, setIsBoardNamed] = useState(false);
     const [imgURL, setImgURL] = useState("");
@@ -114,6 +114,7 @@ export const BoardList = ({deleteTask, updateTaskStatus, boards, lists, tasks, o
                                 tasks={tasks} 
                                 updateTaskStatus={updateTaskStatus}
                                 deleteTask={deleteTask}
+                                updateTask={updateTask}
                                 />)}
                                 
                 keyExtractor={(item) => item?.id}
