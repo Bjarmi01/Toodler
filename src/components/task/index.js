@@ -1,3 +1,13 @@
+<<<<<<< HEAD
+import React from "react";
+import { View, Text } from "react-native";
+export const Task = () => {
+    return (
+        <View>
+            <Text>
+                blabal
+            </Text>
+=======
 import react, { useState } from 'react';
 import { View, Text, TouchableOpacity} from "react-native";
 import { Octicons } from '@expo/vector-icons';
@@ -40,8 +50,13 @@ export const Task = ({ deleteTask, updateTaskStatus, task} ) => {
             </View>
             
             
+>>>>>>> master
         </View>
     )
 }
 
+<<<<<<< HEAD
+export default Task
+=======
 export default Task;
+>>>>>>> master
