@@ -20,7 +20,7 @@ export default StyleSheet.create({
         alignItems: 'flex-start',
         flexWrap: 'wrap',
         flexDirection: 'row',
-        marginBottom: 7
+        marginBottom: 7,
         justifyContent: 'center',
         textAlign: 'center',
     },
