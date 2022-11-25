@@ -2,9 +2,8 @@ import { NavigationHelpersContext } from "@react-navigation/native";
 import React from "react";
 import { View, Text, TouchableHighlight } from "react-native";
 import styles from "./styles";
-import Main from "../../views/main";
 
-export const ListToolbar = ({onCreateList , navigation, hasBoardSelected, deleteList}) => {
+export const ListToolbar = ({onCreateList , navigation, hasListSelected, deleteList}) => {
     return (
         <View style={styles.toolbar}>
             <TouchableHighlight 
@@ -14,10 +13,10 @@ export const ListToolbar = ({onCreateList , navigation, hasBoardSelected, delete
             </TouchableHighlight>
             <TouchableHighlight 
                         style={styles.toolbarAction} 
-                        disabled={!hasBoardSelected}
+                        disabled={!hasListSelected}
                         onPress={deleteList}
                     >
-                <Text style={[styles.toolbarActionText, !hasBoardSelected ? { color: "rgba(156, 156, 156, .9)"}: {}]} >Delete List</Text>
+                <Text style={[styles.toolbarActionText, !hasListSelected ? { color: "rgba(156, 156, 156, .9)"}: {}]} >Delete List</Text>
             </TouchableHighlight>
         </View>
     );
