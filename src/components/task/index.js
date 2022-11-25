@@ -11,7 +11,7 @@ export const Task = ({ lists, updateTask, deleteTask, updateTaskStatus, task} ) 
     const [isEditingTask, setIsEditingTask] = useState(false);
     const [taskName, setTaskName] = useState(task.name);
     const [taskDescription, setTaskDescription] = useState(task.description);
-    const [list, setList] = useState(task.listId);
+    const [parentList, setParentList] = useState(task.listId);
 
     const otherLists = lists.map(list => {
         if (list.id === task.listId) {
@@ -35,13 +35,12 @@ export const Task = ({ lists, updateTask, deleteTask, updateTaskStatus, task} ) 
     }
 
     const handleUpdateTask = () => {
-        console.log(list);
         const updatedTask = {
             id: task.id,
             name: taskName,
             description: taskDescription,
             isFinished: isDone,
-            listId: list,
+            listId: parentList,
         }
         
         setTaskName("");
@@ -77,7 +76,7 @@ export const Task = ({ lists, updateTask, deleteTask, updateTaskStatus, task} ) 
                 <Text>Move To:</Text>
                 <SelectList 
                     data={otherLists}
-                    setSelected={(val) => setList(val)} 
+                    setSelected={(val) => setParentList(val)} 
                     save="key"
                     
                 />
