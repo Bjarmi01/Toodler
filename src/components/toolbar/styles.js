@@ -6,17 +6,21 @@ export default StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'center',
-        height: 85,
+        height: 50,
         backgroundColor: greenBlueDark
     },
     toolbarAction: {
         flex: 1,
+        justifyContent: 'center',
         alignItems: 'center',
-        marginTop: 30,
+        
     },
-    toolbarActionText: {
+    toolbarIcons: {
         fontWeight: 'bold',
         color: 'white',
-        fontSize: 14
+        fontSize: 25,
+        width: "auto",
+        marginLeft: "auto",
+        marginRight: "auto",
     }
 });
