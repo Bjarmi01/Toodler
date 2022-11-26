@@ -16,7 +16,6 @@ export const Main = ({navigation}) => {
     const [selectedBoards , setSelectedBoards] = useState([]); 
     const [isCreatingBoard, setIsCreatingBoard] = useState(false);
     const [isCreatingList, setIsCreatingList] = useState(false);
-    const [selectedLists , setSelectedLists] = useState([]); 
 
     const onBoardLongPress = (id) => {
         if(selectedBoards.includes(id)) {
@@ -57,7 +56,7 @@ export const Main = ({navigation}) => {
         
     };
 
-    const onCreateBoardCancel = (newBoard) => {
+    const onCreateBoardCancel = () => {
         setIsCreatingBoard(false);
         
     };
@@ -80,32 +79,10 @@ export const Main = ({navigation}) => {
         
     }
 
-    const onCreateList = () => {
-        if (!isCreatingList) {
-            setIsCreatingList(true);
-        }
-        
-    };
-
-    const onListLongPress = (id) => {
-        if(selectedLists.includes(id)) {
-            setSelectedLists(selectedLists.filter((list) => list !== id));
-        } else {
-            
-            setSelectedLists([...selectedLists, id]);
-        }
-    };
-
-    const onCreateListCancel = (newList) => {
-        setIsCreatingList(false);
-        
-    };
-
     const onListSubmit = (newList) => {
         setLists([...lists, newList]);
         setIsCreatingList(false);
-        console.log(newList);
-        console.log("New list created");
+        console.log("New list created", newList);
     };
 
     const deleteList = (id) => {
@@ -131,6 +108,22 @@ export const Main = ({navigation}) => {
 
     };
 
+    const onTaskSubmit = (newTask) => {
+        setTasks([...tasks, newTask]);
+        console.log("New task created", newTask);
+    };
+
+    const updateList = (updatedList) => {
+        const newLists = lists.map((list) => {
+            if(list.id === updatedList.id) {
+                return updatedList;
+            } else {
+                return list;
+            }
+        })
+        setLists(newLists);
+    };
+
     return (
         <View >
             <Toolbar onCreateBoard={()=> onCreateBoard()} deleteBoard={() => deleteBoard()} hasBoardSelected={selectedBoards.length > 0}/>
@@ -142,17 +135,16 @@ export const Main = ({navigation}) => {
                 updateBoard={(updatedboard) => updateBoard(updatedboard)}
                 isCreatingBoard={isCreatingBoard}
                 selectedBoards={selectedBoards}
-                onListLongPress={id => onListLongPress(id)}
-                onCreateListCancel={() => onCreateListCancel()}
                 onListSubmit={(newList) => onListSubmit(newList)}
-                isCreatingList={isCreatingList}
-                selectedLists= {selectedLists}
                 boards={boards}
                 lists={lists}
                 tasks={tasks}
                 updateTaskStatus={(updatedTask) => updateTaskStatus(updatedTask)}
                 deleteTask={(id) => deleteTask(id)}
                 updateTask={(updatedTask) => updateTask(updatedTask)}
+                onTaskSubmit={(newTask) => onTaskSubmit(newTask)}
+                deleteList={(id) => deleteList(id)}
+                updateList={(updatedList) => updateList(updatedList)}
             />
         </View>
     );

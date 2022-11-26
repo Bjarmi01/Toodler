@@ -5,7 +5,7 @@ import styles from "./styles";
 import {  TextInput } from "@react-native-material/core";
 import { greenBlueDark } from "../../styles/colors";
 
-export const BoardList = ({updateTask, deleteTask, updateTaskStatus, boards, lists, tasks, onLongPress, selectedBoards, isCreatingBoard, onCreateBoardCancel, onBoardSubmit, updateBoard, onCreateListCancel, selectedLists, isCreatingList, onListSubmit}) => {
+export const BoardList = ({updateList, onTaskSubmit, updateTask, deleteTask, deleteList, updateTaskStatus, boards, lists, tasks, onLongPress, selectedBoards, isCreatingBoard, onCreateBoardCancel, onBoardSubmit, updateBoard, onListSubmit}) => {
     const [boardName , setBoardName] = useState("");
     const [imgURL, setImgURL] = useState("");
     const [boardDescription, setBoardDescription] = useState("");
@@ -53,7 +53,7 @@ export const BoardList = ({updateTask, deleteTask, updateTaskStatus, boards, lis
 
 
     return (
-        <View>
+        <View style={styles.list}>
             <View>
             {
                 isCreatingBoard
@@ -117,6 +117,10 @@ export const BoardList = ({updateTask, deleteTask, updateTaskStatus, boards, lis
                         updateTaskStatus={updateTaskStatus}
                         deleteTask={deleteTask}
                         updateTask={updateTask}
+                        onListSubmit={onListSubmit}
+                        onTaskSubmit={onTaskSubmit}
+                        deleteList={deleteList}
+                        updateList={updateList}
                         />)}
                                     
                     keyExtractor={(item) => item?.id}
