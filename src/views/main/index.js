@@ -65,7 +65,7 @@ export const Main = ({navigation}) => {
     const onBoardSubmit = (newBoard) => {
         setBoards([...boards, newBoard]);
         setIsCreatingBoard(false);
-        console.log("New board created");
+        console.log("New board created", newBoard);
     };
 
     const deleteBoard = () => {
@@ -133,8 +133,8 @@ export const Main = ({navigation}) => {
 
     return (
         <View >
-            <Toolbar onCreateBoard={()=> onCreateBoard()} navigation={navigation} deleteBoard={() => deleteBoard()} hasBoardSelected={selectedBoards.length > 0}/>
-            <ListToolbar onCreateList={()=> onCreateList()} navigation={navigation} deleteList={() => deleteList()} hasListSelected={selectedLists.length > 0}/>
+            <Toolbar onCreateBoard={()=> onCreateBoard()} deleteBoard={() => deleteBoard()} hasBoardSelected={selectedBoards.length > 0}/>
+          
             <BoardList 
                 onLongPress={id => onBoardLongPress(id)}
                 onCreateBoardCancel={() => onCreateBoardCancel()}

@@ -83,4 +83,19 @@ export default StyleSheet.create({
 
     },
 
+    boardDescription: {
+        fontStyle: 'italic',
+        fontSize: 10,
+        textAlign: 'center',
+        marginBottom: 10,
+    },
+
+    updateBoardHeader: {
+        fontSize: 18,
+        fontWeight: "bold",
+        textAlign: "center",
+        marginTop: 10,
+        marginBottom: 10,
+     },
+
 });

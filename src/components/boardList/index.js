@@ -1,22 +1,20 @@
 import React, { useState } from "react";
-import { View, Text, FlatList } from "react-native";
+import { View, Text, FlatList, Button } from "react-native";
 import { Board } from "../board";
 import styles from "./styles";
+import {  TextInput } from "@react-native-material/core";
 import { greenBlueDark } from "../../styles/colors";
-import { Banner, Button, HStack, TextInput } from "@react-native-material/core";
-import { SelectList } from 'react-native-dropdown-select-list'
 
 export const BoardList = ({updateTask, deleteTask, updateTaskStatus, boards, lists, tasks, onLongPress, selectedBoards, isCreatingBoard, onCreateBoardCancel, onBoardSubmit, updateBoard, onCreateListCancel, selectedLists, isCreatingList, onListSubmit}) => {
     const [boardName , setBoardName] = useState("");
-    const [isBoardNamed, setIsBoardNamed] = useState(false);
     const [imgURL, setImgURL] = useState("");
-
+    const [boardDescription, setBoardDescription] = useState("");
     const [listName , setListName] = useState("");
     const [isListNamed, setIsListNamed] = useState(false);
     const [listColor, setListColor] = useState("");
     const [boardId, setBoardId] = useState("");
 
-    const [selected, setSelected] = React.useState("");
+    const [selected, setSelected] = useState("");
     const data = boards.map((board)=>{
         return{
             key: board.id,
@@ -29,9 +27,10 @@ export const BoardList = ({updateTask, deleteTask, updateTaskStatus, boards, lis
             id: boards.length + 1,
             name: boardName,
             thumbnailPhoto: imgURL,
+            description: boardDescription,
         }
-        setIsBoardNamed(false);
         setBoardName("");
+        setBoardDescription("");
         setImgURL("");
         onBoardSubmit(newBoard);
     
@@ -54,202 +53,78 @@ export const BoardList = ({updateTask, deleteTask, updateTaskStatus, boards, lis
 
 
     return (
-        <View style={styles.list}>
+        <View>
+            <View>
             {
-                isCreatingBoard && !isBoardNamed 
+                isCreatingBoard
                 ?
-                <Banner
-                text="Name your new board"
-                buttons={
-                <HStack spacing={2}>
-                    <TextInput 
-                            color={greenBlueDark} 
-                            style={styles.BoardNameInput} 
-                            variant="standard" 
-                            onChangeText={(newName) => setBoardName(newName)}
-                            />
-                    <Button 
-                            color="red" 
-                            key="Cancel" 
-                            variant="text" 
-                            title="Cancel" 
-                            compact 
-                            onPress={onCreateBoardCancel}
-                            />
-                    <Button 
-                            color={greenBlueDark} 
-                            key="Next" 
-                            variant="text" 
-                            title="Next" 
-                            compact 
-                            onPress={() => setIsBoardNamed(true)}
-                            />
-                </HStack>
-                }
-                
+                <View style={styles.createBoardContainer}>
+                <Text style={styles.createBoardHeader}>Create a New Board</Text>
+                <TextInput
+                    style={styles.BoardNameInput}
+                    color={greenBlueDark}
+                    label="Board Name"
+                    value={boardName}
+                    onChangeText={(text) => setBoardName(text)}
                 />
-                :
-                <></>
-            }
-            {
-                isBoardNamed
-                ?    
-                <Banner
-                text="Enter a URL for your image"
-                buttons={
-                <HStack spacing={2}>
-                    <TextInput 
-                            color={greenBlueDark} 
-                            style={styles.BoardNameInput} 
-                            variant="standard" 
-                            onChangeText={(newImgURL) => setImgURL(newImgURL)}
-                            />
-                    <Button 
-                            color="red" 
-                            key="Back" 
-                            variant="text" 
-                            title="Back" 
-                            compact 
-                            onPress={() => setIsBoardNamed(false)}
-                            />
-                    <Button 
-                        color={greenBlueDark} 
-                        key="Create" 
-                        variant="text" 
-                        title="Create" 
-                        compact 
-                        onPress={() => createBoard()}
-                        />
-                </HStack>
-                }
+                <TextInput
+                    style={styles.BoardNameInput}
+                    color={greenBlueDark}
+                    label="Image URL"
+                    value={imgURL}
+                    onChangeText={(text) => setImgURL(text)}
                 />
-                :
-                <></>
-            }
-            {
-                isCreatingList && !isListNamed 
-                ?
-                <Banner
-                text="Name your new List"
-                buttons={
-                <HStack spacing={2}>
-                    <TextInput 
-                            color={greenBlueDark} 
-                            style={styles.BoardNameInput} 
-                            variant="standard" 
-                            onChangeText={(newName) => setListName(newName)}
-                            />
-                    <Button 
-                            color="red" 
-                            key="Cancel" 
-                            variant="text" 
-                            title="Cancel" 
-                            compact 
-                            onPress={onCreateListCancel}
-                            />
-                    <Button 
-                            color={greenBlueDark} 
-                            key="Next" 
-                            variant="text" 
-                            title="Next" 
-                            compact 
-                            onPress={() => setIsListNamed(true)}
-                            />
-                </HStack>
-                }
-                
-                />
-                :
-                <></>
-            }
-            {
-                isListNamed
-                ?    
-                <Banner
-                text="Enter the color you want the list to be"
-                buttons={
-                <HStack spacing={2}>
-                    <TextInput 
-                            color={greenBlueDark} 
-                            style={styles.BoardNameInput} 
-                            variant="standard" 
-                            onChangeText={(newListColor) => setListColor(newListColor)}
-                            />
-                    <Button 
-                            color="red" 
-                            key="Back" 
-                            variant="text" 
-                            title="Back" 
-                            compact 
-                            onPress={() => setIsListNamed(false)}
-                            />
-                    <Button 
-                        color={greenBlueDark} 
-                        key="Next" 
-                        variant="text" 
-                        title="Next" 
-                        compact 
-                        onPress={() => setIsListNamed(true)}
-                        />
-                </HStack>
-                }
-                />
-                :
-                <></>
-            }
-            {
-                isListNamed
-                ?    
-                <Banner
-                text="Select the board you want this list to be associated with."
-                buttons={
-                <HStack spacing={2}>
-                    <SelectList
-                        setSelected={(val) => setBoardId(val)} 
-                        data={data} 
-                        save="key"
+                <TextInput
+                    style={styles.BoardNameInput}
+                    color={greenBlueDark}
+                    label="Board Description"
+                    value={boardDescription}
+                    onChangeText={(text) => setBoardDescription(text)}
                     />
-                    <Button 
-                            color="red" 
-                            key="Back" 
-                            variant="text" 
-                            title="Back" 
-                            compact 
-                            onPress={() => setIsListNamed(false)}
-                            />
-                    <Button 
-                        color={greenBlueDark} 
-                        key="Create" 
-                        variant="text" 
-                        title="Create" 
-                        compact 
-                        onPress={() => createList()}
-                        />
-                </HStack>
-                }
-                />
+                <View style={styles.createBoardBtns}>
+                    <Button
+                        title="Create Board"
+                        onPress={() => createBoard()}
+                        color={greenBlueDark}
+                    />
+                    <Button
+                        title="Cancel"
+                        onPress={() => onCreateBoardCancel()}
+                        
+                    />
+                </View>    
+                
+                </View>
+                
+            
                 :
                 <></>
             }
-            <FlatList  
-                data={boards}
-                renderItem={({item}) => (
-                                <Board 
-                                onLongPress={onLongPress}
-                                isSelected={selectedBoards.includes(item.id)}
-                                board={item} 
-                                lists={lists} 
-                                updateBoard={updateBoard}
-                                tasks={tasks} 
-                                updateTaskStatus={updateTaskStatus}
-                                deleteTask={deleteTask}
-                                updateTask={updateTask}
-                                />)}
-                                
-                keyExtractor={(item) => item?.id}
-            />
+            </View>
+
+        
+            <View>    
+                <FlatList  
+                    data={boards}
+                    renderItem={({item}) => (
+                        <Board 
+                        onLongPress={onLongPress}
+                        isSelected={selectedBoards.includes(item.id)}
+                        board={item} 
+                        lists={lists} 
+                        updateBoard={updateBoard}
+                        tasks={tasks} 
+                        updateTaskStatus={updateTaskStatus}
+                        deleteTask={deleteTask}
+                        updateTask={updateTask}
+                        />)}
+                                    
+                    keyExtractor={(item) => item?.id}
+                />
+            </View>
         </View>
-    );
+       
+    )
 };
 
 
