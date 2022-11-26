@@ -7,7 +7,7 @@ import ListToolbar from "../listToolbar";
 import Main from "../../views/main";
 import { TextInput } from "@react-native-material/core";
 
-export const Board = ({updateTask, deleteTask, updateTaskStatus, board, lists, tasks, onLongPress, isSelected, updateBoard }) => {
+export const Board = ({updateTask, deleteTask, updateTaskStatus, board, lists, tasks, onLongPress, isSelected, updateBoard, onLongPressList, selectedLists}) => {
     const listByBoardId = lists.filter(list => list.boardId === board.id);
     const [boardName, setBoardName] = useState(board.name);
     const [isEditingBoard, setIsEditingBoard] = useState(false);
@@ -86,7 +86,17 @@ export const Board = ({updateTask, deleteTask, updateTaskStatus, board, lists, t
                         renderItem={({item}) => (<List board={board} list={item} tasks={tasks} updateTaskStatus={updateTaskStatus} deleteTask={deleteTask} updateTask={updateTask} lists={lists}/>)}
                         keyExtractor={(item) => item?.id}/>
             </View> 
-            
+            <FlatList  
+                data={lists}
+                renderItem={({item}) => (
+                                <List 
+                                onLongPressList={onLongPressList}
+                                isListSelected={selectedLists.includes(item.id)}
+                                lists={item}
+                                />)}
+                                
+                keyExtractor={(item) => item?.id}
+            />
         </TouchableOpacity>
 
     )}; 

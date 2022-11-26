@@ -15,14 +15,13 @@ export const Main = ({navigation}) => {
     const [tasks, setTasks] = useState(data.tasks);
     const [selectedBoards , setSelectedBoards] = useState([]); 
     const [isCreatingBoard, setIsCreatingBoard] = useState(false);
-    const [isCreatingList, setIsCreatingList] = useState(false);
-    const [selectedLists , setSelectedLists] = useState([]); 
+    const [selectedLists , setSelectedLists] = useState([]);
+    const [isCreatingList, setIsCreatingList] = useState(false); 
 
     const onBoardLongPress = (id) => {
         if(selectedBoards.includes(id)) {
             setSelectedBoards(selectedBoards.filter((board) => board !== id));
         } else {
-            
             setSelectedBoards([...selectedBoards, id]);
         }
     };
@@ -74,11 +73,12 @@ export const Main = ({navigation}) => {
         deleteLists(bla);
         setSelectedBoards([]);
     
-    }
+    };
+
     const deleteLists = (listslist) => {
         setLists(lists.filter((list) => !listslist.includes(list)));
         
-    }
+    };
 
     const onCreateList = () => {
         if (!isCreatingList) {
@@ -91,7 +91,7 @@ export const Main = ({navigation}) => {
         if(selectedLists.includes(id)) {
             setSelectedLists(selectedLists.filter((list) => list !== id));
         } else {
-            
+            console.log(id);
             setSelectedLists([...selectedLists, id]);
         }
     };
@@ -108,16 +108,23 @@ export const Main = ({navigation}) => {
         console.log("New list created");
     };
 
-    const deleteList = (id) => {
-        const newLists = lists.filter((list) => list.id !== id); 
-        setLists(newLists);
-        tasks.filter((list) => list.listId === id).forEach((task) => deleteTask(task.id));
-    }
+    const deleteList = () => {
+        setLists(lists.filter((list) => !selectedLists.includes(list.id)));
+        const bla = tasks.filter((task) => selectedLists.includes(task.listId))
+        deleteTasks(bla);
+        setSelectedLists([]);
+    
+    };
+
+    const deleteTasks = (taskstask) => {
+        setLists(tasks.filter((task) => !taskstask.includes(task)));
+        
+    };
 
     const deleteTask = (id) => {
         setTasks(tasks.filter((task) => task.id !== id));
         
-    }
+    };
 
     const updateTask = (updatedTask) => {
         const newTasks = tasks.map((task) => {
@@ -142,7 +149,7 @@ export const Main = ({navigation}) => {
                 updateBoard={(updatedboard) => updateBoard(updatedboard)}
                 isCreatingBoard={isCreatingBoard}
                 selectedBoards={selectedBoards}
-                onListLongPress={id => onListLongPress(id)}
+                onLongPressList={id => onListLongPress(id)}
                 onCreateListCancel={() => onCreateListCancel()}
                 onListSubmit={(newList) => onListSubmit(newList)}
                 isCreatingList={isCreatingList}
