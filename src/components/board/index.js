@@ -1,11 +1,9 @@
 import React, { useState }from "react";
 import { View, Text, Image, TouchableOpacity, FlatList, Button } from "react-native";
 import { greenBlueDark } from "../../styles/colors";
-import { AntDesign, Octicons } from "@expo/vector-icons";
+import { AntDesign } from "@expo/vector-icons";
 import styles from "./styles";
 import List from "../list";
-import ListToolbar from "../listToolbar";
-import Main from "../../views/main";
 import { TextInput } from "@react-native-material/core";
 
 export const Board = ({updateList, deleteList, updateTask, deleteTask, updateTaskStatus, board, lists, tasks, onLongPress, isSelected, updateBoard, onListSubmit, onTaskSubmit }) => {

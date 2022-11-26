@@ -1,12 +1,9 @@
 import React, { useState } from "react";
-import { View, Text, StyleSheet } from "react-native";
-import styles from "./styles";
+import { View } from "react-native";
 import Toolbar from "../../components/toolbar";
 import BoardList from "../../components/boardList";
-import Board from "../../components/board";
 import * as data from "../../../data.json";
-import ListToolbar from "../../components/listToolbar";
-import List from "../../components/list";
+
 
 
 export const Main = ({navigation}) => {
